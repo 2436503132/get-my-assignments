@@ -13,7 +13,11 @@ cookies = {sid: value}
 input()
 
 response = requests.get(url, cookies=cookies)
-data = json.loads(response.text)
+try:
+    data = json.loads(response.text)
+except:
+    print("Error: Could not login successfully.")
+    exit()
 
 body: str = data['html']
 
